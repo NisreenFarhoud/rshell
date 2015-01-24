@@ -3,10 +3,12 @@ using namespace std;
 #include <string>
 #include <unistd.h> //library for gethostname and getlogin
 #include <cstdlib>
+#include <cstdio>
 int main()
 {
 	string command;
 	int size = 30;
+	char *argv[size];
 	//setup for print username/hostname
 	char *login_name = getlogin();
 	char hostname[100];
@@ -23,7 +25,7 @@ int main()
 		{
 			command.erase(command.find("#"));
 		}
-		if(command == ("exit" || "EXIT" || "Exit"))
+		if(command == "exit")
 		{
 			exit(0);
 		}
