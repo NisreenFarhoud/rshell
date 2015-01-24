@@ -10,7 +10,7 @@ int main()
 {
 	string command;
 	//int size = 30;
-	//char *argv[30];
+	char *argv[30];
 	//setup for print username/hostname
 	char *login_name = getlogin();
 	char hostname[100];
@@ -32,15 +32,6 @@ int main()
 			exit(0);
 		}
 
-		char str[30] = command;
-		char * pch;
-		pch = strtok(str, " ");
-		while(pch != NULL)
-		{
-			printf ("%s\n",pch);
-			pch = strtok(NULL, " ");
-		}
-/*
 		int pid = fork();
 		if(pid == -1)
 		{
@@ -53,7 +44,7 @@ int main()
 				perror("There was an error in execvp");
 			exit(1);	
 		}
-*/
+
 	}
 	return 0;
 }
