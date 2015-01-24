@@ -1,11 +1,11 @@
-Building RShell
+##Building RShell
 
 This program will run like a shell using commands through execvp.
 
-Run program:	cd rshell
+##Run program:	cd rshell
 		make
 		bin/rshell
 
-Bugs:
+##Bugs:
 1. commands not working
 2. connectors not working
