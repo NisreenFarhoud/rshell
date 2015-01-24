@@ -1,0 +1,20 @@
+Script started on Fri 23 Jan 2015 07:29:53 PM PST
+~
+nfarh002@hammer $ cd Documents/rshell
+~/Documents/rshell
+nfarh002@hammer $ make
+test -d bin || mkdir bin
+g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell
+~/Documents/rshell
+nfarh002@hammer $ bin/[K[K[K[K#testing exit
+~/Documents/rshell
+nfarh002@hammer $ bin/rshell
+nfarh002@hammer.cs.ucr.edu $ exit
+nfarh002@hammer.cs.ucr.edu $ #
+~/Documents/rshell
+nfarh002@hammer $ #testing comments
+~/Documents/rshell
+nfarh002@hammer $ exit
+exit
+
+Script done on Fri 23 Jan 2015 07:31:04 PM PST
