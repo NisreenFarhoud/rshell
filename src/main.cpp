@@ -7,8 +7,8 @@ using namespace std;
 int main()
 {
 	string command;
-	int size = 30;
-	char *argv[size];
+	//int size = 30;
+	char *argv[30];
 	//setup for print username/hostname
 	char *login_name = getlogin();
 	char hostname[100];
@@ -41,7 +41,7 @@ int main()
 				perror("There was an error in execvp");
 			exit(1);	
 		}
-		else if(-1 == wait(0))
+		else if(-1 == wait())
 		{
 			perror("There was an error with wait().");
 		}
