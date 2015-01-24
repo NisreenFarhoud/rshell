@@ -4,6 +4,8 @@ using namespace std;
 #include <unistd.h> //library for gethostname and getlogin
 #include <cstdlib>
 #include <cstdio>
+#include <cstring>
+
 int main()
 {
 	string command;
@@ -29,6 +31,16 @@ int main()
 		{
 			exit(0);
 		}
+
+		char str[] = command;
+		char * pch;
+		pch = strtok(str, " ");
+		while(pch != NULL)
+		{
+			printf ("%s\n",pch);
+			pch = strtok(NULL, " ");
+		}
+/*
 		int pid = fork();
 		if(pid == -1)
 		{
@@ -41,6 +53,7 @@ int main()
 				perror("There was an error in execvp");
 			exit(1);	
 		}
+*/
 	}
 	return 0;
 }
