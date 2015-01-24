@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
 	string command;
+	int size = 30;
 	//setup for print username/hostname
 	char *login_name = getlogin();
 	char hostname[100];
@@ -21,7 +22,26 @@ int main()
 		if(command.find("#") != string::npos)
 		{
 			command.erase(command.find("#"));
+		}
+		if(command == ("exit" || "EXIT" || "Exit"))
+		{
+			exit(0);
+		}
+		int pid = fork();
+		if(pid == -1)
+		{
+			perror("fork");
 			exit(1);
+		}
+		else if(pid == 0)
+		{
+			if(-1 == execvp(argv[0], argv))
+				perror("There was an error in execvp");
+			exit(1);	
+		}
+		else if(-1 == wait(0))
+		{
+			perror("There was an error with wait().");
 		}
 	}
 	return 0;
