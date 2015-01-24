@@ -41,10 +41,6 @@ int main()
 				perror("There was an error in execvp");
 			exit(1);	
 		}
-		else if(-1 == wait())
-		{
-			perror("There was an error with wait().");
-		}
 	}
 	return 0;
 }
