@@ -10,7 +10,7 @@ int main()
 {
 	string command;
 	//int size = 30;
-	char *argv[30];
+	//char *argv[30];
 	//setup for print username/hostname
 	char *login_name = getlogin();
 	char hostname[100];
@@ -32,7 +32,7 @@ int main()
 			exit(0);
 		}
 
-		char str[] = command;
+		char str[30] = command;
 		char * pch;
 		pch = strtok(str, " ");
 		while(pch != NULL)
