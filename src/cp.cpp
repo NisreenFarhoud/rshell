@@ -113,6 +113,12 @@ int main(int argc, char** argv) {
 		exit(-1);
 	}
 
+	struct stat buf;
+	if (stat(argv[2], &buf) != -1) {
+		perror("output file exists");
+		exit(-1);
+	}
+
 	if (argc == 3) copyByFStream(argv[1], argv[2]);
 	else if (argc == 4) {
 		Timer t1;
@@ -179,7 +185,7 @@ void copyByFStream(char* input, char* output) {
 
 void copyByReadByte(char* input, char* output) {
 	int fdIn;
-	if (-1 == (fdIn = open(input,O_RDWR))) {
+	if (-1 == (fdIn = open(input,O_RDONLY))) {
 		perror("open failed on input file");
 		exit(-1);
 	}
@@ -213,7 +219,7 @@ void copyByReadByte(char* input, char* output) {
 
 void copyByReadBuf(char* input, char*output) {
 	int fdIn;
-	if (-1 == (fdIn = open(input,O_RDWR))) {
+	if (-1 == (fdIn = open(input,O_RDONLY))) {
 		perror("open failed on input file");
 		exit(-1);
 	}

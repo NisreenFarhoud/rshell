@@ -1,0 +1,76 @@
+Script started on Mon 09 Feb 2015 01:08:16 PM PST
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ la [K[Ks -l
+total 80
+-rwxrwxr-x 1 pokeforce pokeforce 19556 Feb  9 13:07 [0m[01;32ma.out[0m
+-rw-rw-r-- 1 pokeforce pokeforce     0 Feb  9 13:08 cp.script
+-rw-rw-r-- 1 pokeforce pokeforce    23 Feb  9 12:48 input.cpp
+-rw-rw-r-- 1 pokeforce pokeforce 35122 Feb  9 11:07 LICENSE
+-rw-rw-r-- 1 pokeforce pokeforce   216 Feb  9 11:07 Makefile
+-rw-rw-r-- 1 pokeforce pokeforce    23 Feb  9 13:07 output.cpp
+-rw-rw-r-- 1 pokeforce pokeforce   474 Feb  9 11:07 README.md
+drwxrwxr-x 2 pokeforce pokeforce  4096 Feb  9 13:07 [01;34msrc[0m
+drwxrwxr-x 2 pokeforce pokeforce  4096 Feb  9 11:07 [01;34mtests[0m
+-rw-rw-r-- 1 pokeforce pokeforce     0 Feb  9 11:22 XDG_VTNR=7
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ rm o[K[K[K[Kls -lssh dhand002@hammer.cs.ucr.eduls[Kssh dhand002@hammer.cs.ucr.eduexit[Kvim src/ls.cpprmdir src/newFold/ls -R[K[Kmkdir src/newFoldls[Kvim src/ls.cpp[2Phcpp[2Phcpp[2Phcpp h[Kcpp [2Ph[C[2@cpp[Ch[Kcpp h[Kcpp[2Phcpp[2Phcppls[Kmkdir src/newFoldls[K -Rrmdir src/newFold/[4Pvim src/ls.cppexit[Kssh dhand002@hammer.cs.ucr.eduls[Kssh dhand002@hammer.cs.ucr.eduls -l[K[Kls -lssh dhand002@hammer.cs.ucr.eduls[Kssh dhand002@hammer.cs.ucr.eduexit[Kvim src/ls.cpprmdir src/newFold/ls -R[K[Kmkdir src/newFoldls[Kvim src/ls.cpp[2Phcpp[2Phcpp[2Phcpp h[Kcpp [2Ph[C[2P.vimrc[C[6Pls -avim src/ls.h [8Pls -R[Kcd rshell/Downloads/git push origin hw1[6Pcd Downloads/[3Prshell/ls[K -Rvim src/ls.h [8Pls -avim .vimrc [2@src/ls.h[C[2@cpp[Ch[Kcpp h[Kcpp[2Phcpp[2Phcppls[Kmkdir src/newFoldls[K -Rrmdir src/newFold/[4Pvim src/ls.cppexit[Kssh dhand002@hammer.cs.ucr.eduls[Kssh dhand002@hammer.cs.ucr.eduls -l[K[K./a.out input.cpp output.cpp 
+output file exists: Success
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ rm output.cpp 
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ rm output.cpp [15@./a.out input.cpp[C[C[C[C[C[C[C[C[C[C[C[C[15Prm[C[C[C[C[C[C[C[C[C[C[C[C[Kls -l
+total 76
+-rwxrwxr-x 1 pokeforce pokeforce 19556 Feb  9 13:07 [0m[01;32ma.out[0m
+-rw-rw-r-- 1 pokeforce pokeforce     0 Feb  9 13:08 cp.script
+-rw-rw-r-- 1 pokeforce pokeforce    23 Feb  9 12:48 input.cpp
+-rw-rw-r-- 1 pokeforce pokeforce 35122 Feb  9 11:07 LICENSE
+-rw-rw-r-- 1 pokeforce pokeforce   216 Feb  9 11:07 Makefile
+-rw-rw-r-- 1 pokeforce pokeforce   474 Feb  9 11:07 README.md
+drwxrwxr-x 2 pokeforce pokeforce  4096 Feb  9 13:07 [01;34msrc[0m
+drwxrwxr-x 2 pokeforce pokeforce  4096 Feb  9 11:07 [01;34mtests[0m
+-rw-rw-r-- 1 pokeforce pokeforce     0 Feb  9 11:22 XDG_VTNR=7
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ ls -lrm output.cpp [15@./a.out input.cpp[C[C[C[C[C[C[C[C[C[C[C[C
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ ca[K[Kls -l
+total 80
+-rwxrwxr-x 1 pokeforce pokeforce 19556 Feb  9 13:07 [0m[01;32ma.out[0m
+-rw-rw-r-- 1 pokeforce pokeforce     0 Feb  9 13:08 cp.script
+-rw-rw-r-- 1 pokeforce pokeforce    23 Feb  9 12:48 input.cpp
+-rw-rw-r-- 1 pokeforce pokeforce 35122 Feb  9 11:07 LICENSE
+-rw-rw-r-- 1 pokeforce pokeforce   216 Feb  9 11:07 Makefile
+-rw-rw-r-- 1 pokeforce pokeforce    23 Feb  9 13:09 output.cpp
+-rw-rw-r-- 1 pokeforce pokeforce   474 Feb  9 11:07 README.md
+drwxrwxr-x 2 pokeforce pokeforce  4096 Feb  9 13:07 [01;34msrc[0m
+drwxrwxr-x 2 pokeforce pokeforce  4096 Feb  9 11:07 [01;34mtests[0m
+-rw-rw-r-- 1 pokeforce pokeforce     0 Feb  9 11:22 XDG_VTNR=7
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ cat ou[K[K[K input.cpp 
+This is my Test File! 
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ cat output.cpp 
+This is my Test File! 
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ c[Kcat output.cpp [1Pin[C[C[C[C[C[C[C[C[9Pls -l./a.out input.cpp output.cpp ls -l[Kcat input.cpp [1@out[C[C[C[C[C[C[C[C[Krm output.cpp 
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ rm output.cpp [1@cat[C[C[C[C[C[C[C[C[C[C[C[C[1Pin[C[C[C[C[C[C[C[C[9Pls -l./a.out input.cpp output.cpp [1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@u[1@t[C[1@ [1@u[1@s[1@r[1@/[1@s[1@h[1@a[1@r[1@e[1@/[1@d[1@i[1P[1P[1P[1P[1P[1@r[1@e[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@u[1@s[1P[1@s[1@r[1@/[1@s[1@h[1@a[1@r[1@e[1@/[1@d[1@i[1@c[1@t[1@/[1@a[1@m[1@e[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@/[1@u[1@s[2@r/[1@s[1@h[1@a[1@r[1@e[1@/[1@d[1@i[1@s[1P[1@c[1@t[1@/[1@a[1@m[1@e[13@rican-english
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ ls -l[K[K[K[K[Krm [K[K[Kls -l
+total 1000
+-rwxrwxr-x 1 pokeforce pokeforce  19556 Feb  9 13:07 [0m[01;32ma.out[0m
+-rw-rw-r-- 1 pokeforce pokeforce   4096 Feb  9 13:09 cp.script
+-rw-rw-r-- 1 pokeforce pokeforce     23 Feb  9 12:48 input.cpp
+-rw-rw-r-- 1 pokeforce pokeforce  35122 Feb  9 11:07 LICENSE
+-rw-rw-r-- 1 pokeforce pokeforce    216 Feb  9 11:07 Makefile
+-rw-rw-r-- 1 pokeforce pokeforce 938848 Feb  9 13:10 output.cpp
+-rw-rw-r-- 1 pokeforce pokeforce    474 Feb  9 11:07 README.md
+drwxrwxr-x 2 pokeforce pokeforce   4096 Feb  9 13:07 [01;34msrc[0m
+drwxrwxr-x 2 pokeforce pokeforce   4096 Feb  9 11:07 [01;34mtests[0m
+-rw-rw-r-- 1 pokeforce pokeforce      0 Feb  9 11:22 XDG_VTNR=7
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ rm output.cpp 
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ rm output.cpp [9Pls -l./a.out /usr/share/dict/american-english output.cpp df[K[K-f[Ka[Kf[Kl
+user runtime get/put: 0.027415
+system runtime get/put: 0
+wallclock runtime get/put: 0.025472
+
+user runtime read/write (byte): 0.044605
+system runtime read/write (byte): 0.726214
+wallclock runtime read/write (byte): 0.77201
+
+user runtime read/write (buffer): 0.040147
+system runtime read/write (buffer): 0.729976
+wallclock runtime read/write (buffer): 0.769381
+
+]0;pokeforce@Iron-Sky-5: ~/Downloads/rshell-1pokeforce@Iron-Sky-5:~/Downloads/rshell-1$ exit
+exit
+
+Script done on Mon 09 Feb 2015 01:11:10 PM PST
