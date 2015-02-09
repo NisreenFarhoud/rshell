@@ -144,9 +144,7 @@ void R_flag(vector<string> &file, string path, bool flagA, bool flagL)
 		for(; i < file.size(); ++i)
 		{
 			unsigned file_sz = file.at(i).size();
-			if(flagA && total < file_sz)
-				total = file_sz;
-			else if (file.at(i).at(0) != '.' && total < file_sz)
+			if((flagA && total < file_sz) || (file.at(i).at(0) != '.' && total < file_sz))
 				total = file_sz;
 		}
 	
@@ -218,8 +216,7 @@ void R_flag(vector<string> &file, string path, bool flagA, bool flagL)
 				perror("readdir failed");
 				exit(1);
 			}
-			string s = direntp->d_name;
-			file.push_back(s);
+			file.push_back(direntp->d_name);
 		}
 		if(closedir(dirp) == -1)
 		{
@@ -311,9 +308,7 @@ int main(int argc, char*argv[])
 		for(unsigned i =0; i < files.size(); ++i)
 		{
 			unsigned size = files.at(i).size();
-			if((flag_type&1) && total < size)
-				total = size;
-			else if(files.at(i).at(0) != '.' && total < size)
+			if(((flag_type&1) && total < size) || (files.at(i).at(0) != '.' && total < size))
 				total = size;
 		}
 		total = total + 2;
@@ -340,7 +335,8 @@ int main(int argc, char*argv[])
                 {
                         if(print_total)
                         {
-                                long ret_total = 0;
+                        	print_total = false;
+			        long ret_total = 0;
                                 for(unsigned i=0; i <files.size(); ++i)
                                 {
                                         struct stat s1;
@@ -353,7 +349,6 @@ int main(int argc, char*argv[])
                                         ret_total += s1.st_blocks/2;
                                  }
                                 cout << "total " << ret_total << endl;
-                                print_total = false;
                         }
                         L_flag(dirName + "/" + files.at(i),files.at(i));
                 }
@@ -391,6 +386,7 @@ int main(int argc, char*argv[])
                 {
                         if(print_total)
                         {
+				print_total = false;
                                 long ret_total = 0;
                                 for(unsigned i=0; i <files.size(); ++i)
                                 {
@@ -405,7 +401,6 @@ int main(int argc, char*argv[])
                                                 ret_total += s1.st_blocks/2;
                                  }
                                 cout << "total " << ret_total << endl;
-                        	print_total = false;
 			}
                         if(files.at(i).at(0) != '.')
                         {
@@ -437,7 +432,7 @@ int main(int argc, char*argv[])
 				if(align <= 0)
 				{
 					cout << endl;
-					align = p;
+					align = p;//reset alignment
 				}
 			}
 		}
