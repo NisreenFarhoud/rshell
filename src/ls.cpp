@@ -101,12 +101,13 @@ void L_flag(const string path, const string &file)
         time = time.substr(3, time.size()-12) + " ";
 	cout << setw(15) << time;
 	
-	if(blueDir)
-		cout << "\x1b[94m";
 	if(file.at(0) == '.')
 		cout << "\x1b[100m";
 	if(greenExec)
 		cout << "\x1b[92m";
+	if(blueDir)
+                cout << "\x1b[94m";
+	
 	cout << file << "\x1b[0m" <<  endl;
 	
 }
@@ -371,12 +372,12 @@ int main(int argc, char*argv[])
 		//check for flags -a
 		else if (flag_type&1)
                 {
-                        if(S_ISDIR(s.st_mode))
-			        cout << "\x1b[94m";
 			if(files.at(i).at(0) == '.')
                                	cout << "\x1b[100m";
                         if(s.st_mode & S_IXUSR)
                                 cout << "\x1b[92m";
+			if(S_ISDIR(s.st_mode))
+                                cout << "\x1b[94m";
 			cout << left << setw(total) << files.at(i) << "\x1b[0m";//10=total
 			align = align-1;
                         if(align <= 0)
