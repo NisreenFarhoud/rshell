@@ -114,8 +114,6 @@ void L_flag(const string path, const string &file)
 
 void R_flag(vector<string> &file, string path, bool flagA, bool flagL)
 {
-	unsigned total = 1;
-        unsigned align = 85;
 	cout << endl;
 	cout << path << ":" << endl;
 	vector<string> directory;
@@ -138,21 +136,6 @@ void R_flag(vector<string> &file, string path, bool flagA, bool flagL)
 		}
 		cout << "total " << ret_total << endl;
 	}
-	else 
-	{
-		unsigned i=0;
-		for(; i < file.size(); ++i)
-		{
-			unsigned file_sz = file.at(i).size();
-			if((flagA && total < file_sz) || (file.at(i).at(0) != '.' && total < file_sz))
-				total = file_sz;
-		}
-	
-		total = total + 2;
-		align = align / total;
-	}
-	int p = align;
-
 	for(unsigned i=0; i < file.size(); ++i)
 	{
 		struct stat s;
@@ -177,14 +160,8 @@ void R_flag(vector<string> &file, string path, bool flagA, bool flagL)
 				cout << "\x1b[100m";
 	
 			if(file.at(i).at(0) != '.' || flagA)
-				cout << left << setw(total) << file.at(i);
-			cout << "\x1b[0m";
-			align = align - 1;
-			if(align <= 0)
-			{
-				cout << endl;
-				align = p;
-			}
+				cout << left << setw(10) << file.at(i);
+			cout << "\x1b[0m" << endl;
 		}
 		if(S_ISDIR(s.st_mode))
 		{
@@ -231,9 +208,6 @@ void R_flag(vector<string> &file, string path, bool flagA, bool flagL)
 
 int main(int argc, char*argv[])
 {
-	unsigned total = 1;
-        unsigned align = 85;
-        unsigned p;
 	bool print_total = true;
 	int flag_type = 0;
 	vector <string> inp;
@@ -302,19 +276,6 @@ int main(int argc, char*argv[])
 		exit(1);
 	}
 	sort(files.begin(),files.end(),stringCompare);
-	
-	if(!(flag_type&2))
-	{
-		for(unsigned i =0; i < files.size(); ++i)
-		{
-			unsigned size = files.at(i).size();
-			if(((flag_type&1) && total < size) || (files.at(i).at(0) != '.' && total < size))
-				total = size;
-		}
-		total = total + 2;
-		align = align/total;
-		p = align;
-	}
 	for(unsigned i=0; i < files.size(); ++i) //perform on every file in directory
 	{
 		struct stat s;
@@ -373,13 +334,7 @@ int main(int argc, char*argv[])
                                 cout << "\x1b[92m";
 			if(S_ISDIR(s.st_mode))
                                 cout << "\x1b[94m";
-			cout << left << setw(total) << files.at(i) << "\x1b[0m";//10=total
-			align = align-1;
-                        if(align <= 0)
-                        {
-                                cout << endl;
-                                align = p;
-                        }
+			cout << left << setw(10) << files.at(i) << "\x1b[0m" << endl;//10=total
                 }
 		//check for flas -l
 		else if(flag_type&2)
@@ -423,17 +378,11 @@ int main(int argc, char*argv[])
 				if(S_ISDIR(s.st_mode))
 				{
 					cout << "\x1b[94m";
-					cout << left << files.at(i) << setw(total) << "/";
+					cout << left << files.at(i) << setw(10) << "/";
 				}
 				else
-					cout << left << setw(total) << files.at(i);
-				cout << "\x1b[0m";
-				align = align - 1;
-				if(align <= 0)
-				{
-					cout << endl;
-					align = p;//reset alignment
-				}
+					cout << left << setw(10) << files.at(i);
+				cout << "\x1b[0m" << endl;
 			}
 		}
 	}
