@@ -7,8 +7,9 @@ This program will run like a shell using commands through execvp.
 		bin/rshell
 
 ##Bugs:
-1. commands not working
+1. commands not added
 2. connectors not working
+3. piping not working
 
 ##Built ls Command
 Bugs:

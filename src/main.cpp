@@ -196,8 +196,7 @@ void output_redirection(const string& command)
                 perror("open failed");
                 return;
         }
-	int location = command.find(">");
-        string front = command.substr(0,location);
+        string front = command.substr(0,command.find(">"));
 	int pid = fork();
 	if(pid == -1)
 	{
@@ -266,9 +265,7 @@ void output_redirection(const string& command)
 
 void output_redirectionD(const string& command)
 {
-        int location = command.find(">>");
         string back = command.substr(command.find(">>")+2);
-
         char_separator<char> sep(" ");
         tokenizer<char_separator<char> > tokens(back,sep);
         tokenizer<char_separator<char> >::iterator it = tokens.begin();
@@ -283,7 +280,7 @@ void output_redirectionD(const string& command)
                 perror("open failed");
                 return;
         }
-	string front = command.substr(0,location);
+	string front = command.substr(0,command.find(">>"));
         int pid = fork();
         if(pid == -1)
         {
