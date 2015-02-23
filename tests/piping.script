@@ -1,0 +1,139 @@
+Script started on Sun 22 Feb 2015 06:45:29 PM PST
+~
+nfarh002@hammer $ cd CS100/rshell
+~/CS100/rshell
+nfarh002@hammer $ make
+g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell
+g++ -Wall -Werror -ansi -pedantic ./src/ls.cpp -o ./bin/ls
+g++ -Wall -Werror -ansi -pedantic ./src/cp.cpp -o ./bin/cp
+~/CS100/rshell
+nfarh002@hammer $ bin/rshell
+nfarh002@hammer.cs.ucr.edu $ ## testing string        input redirection from string
+nfarh002@hammer.cs.ucr.edu $ cat <<< "Hello World!"
+Hello World!
+nfarh002@hammer.cs.ucr.edu $ ## testing out   input redire ection
+nfarh002@hammer.cs.ucr.edu $ cat < test.txt
+d
+b
+a
+c
+f
+nfarh002@hammer.cs.ucr.edu $ ## testing input redirection w/ other command
+nfarh002@hammer.cs.ucr.edu $ sort < test.txt
+a
+b
+c
+d
+f
+nfarh002@hammer.cs.ucr.edu $ ## testing output redirection
+nfarh002@hammer.cs.ucr.edu $ ls > test.txt
+nfarh002@hammer.cs.ucr.edu $ cat < test.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+nfarh002@hammer.cs.ucr.edu $ ## testing appended output redirection
+nfarh002@hammer.cs.ucr.edu $ ls >> test.txt
+nfarh002@hammer.cs.ucr.edu $ cat < test.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+nfarh002@hammer.cs.ucr.edu $ ## testing special case (spaces)
+nfarh002@hammer.cs.ucr.edu $ cat<test.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+nfarh002@hammer.cs.ucr.edu $ cat <                test.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+nfarh002@hammer.cs.ucr.edu $ ls>test.txt
+nfarh002@hammer.cs.ucr.edu $ cat << test.txt
+open failed: No such file or directory
+nfarh002@hammer.cs.ucr.edu $ cat < test.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+nfarh002@hammer.cs.ucr.edu $ ## testing input then output
+nfarh002@hammer.cs.ucr.edu $ sort < test.txt > test2.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+nfarh002@hammer.cs.ucr.edu $ ##testing special cases for input string
+nfarh002@hammer.cs.ucr.edu $ cat<<<"Hi"
+Hi
+nfarh002@hammer.cs.ucr.edu $ cat<<<""
+
+nfarh002@hammer.cs.ucr.edu $ cat <<< 'Helloe '
+string not found
+
+nfarh002@hammer.cs.ucr.edu $ cat <<< "hello
+hello
+nfarh002@hammer.cs.ucr.edu $ cat <<< hello
+string not found
+
+nfarh002@hammer.cs.ucr.edu $ exit
+
+Script done on Sun 22 Feb 2015 06:56:05 PM PST
