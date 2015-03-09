@@ -1,0 +1,113 @@
+Script started on Mon 09 Mar 2015 02:01:21 PM PDT
+~
+nfarh002@hammer $ cd CS100/rshell
+~/CS100/rshell
+nfarh002@hammer $ make
+g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell
+g++ -Wall -Werror -ansi -pedantic ./src/ls.cpp -o ./bin/ls
+g++ -Wall -Werror -ansi -pedantic ./src/cp.cpp -o ./bin/cp
+~/CS100/rshell
+nfarh002@hammer $ bin/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ echo "hel         #testing single commands
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ echo "hello"
+"hello"
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ pwd
+/home/csmajs/nfarh002/CS100/rshell
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ cd src
+/home/csmajs/nfarh002/CS100/rshell/src
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell/src $ cd ..
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ ls
+>  bin	bin?LICENSE  LICENSE  Makefile	README.md  src	test2.txt  tests  test.txt
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ ls -l
+total 56
+-rw------- 1 nfarh002 csmajs    52 Feb 22 15:59 >
+drwx------ 2 nfarh002 csmajs  4096 Mar  9 13:57 bin
+-rw------- 1 nfarh002 csmajs     0 Mar  8 22:03 bin?LICENSE
+-rw------- 1 nfarh002 csmajs 35122 Jan 23 16:37 LICENSE
+-rw------- 1 nfarh002 csmajs   274 Feb  9 15:08 Makefile
+-rw------- 1 nfarh002 csmajs   432 Mar  8 22:48 README.md
+drwx------ 2 nfarh002 csmajs  4096 Mar  8 23:12 src
+-rw------- 1 nfarh002 csmajs     6 Mar  7 21:08 test2.txt
+drwx------ 2 nfarh002 csmajs  4096 Mar  9 13:56 tests
+-rw------- 1 nfarh002 csmajs     0 Mar  8 22:03 test.txt
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ mkdir ex
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ cd ex     ls
+>  bin	bin?LICENSE  ex  LICENSE  Makefile  README.md  src  test2.txt  tests  test.txt
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ rm ex
+rm: cannot remove `ex': Is a directory
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ #test comments
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ echo "hello" #;this is a comment
+"hello"
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ #test comments w/ connectors
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ echo "hello" && echo "hi" #&& echo "bad"
+"hello"
+"hi"
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ echo hello && echo hi^[[D^[[D                  || echo hi
+hello
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ sort t.txt || echo ello^[[D^[[D^[[D                hello
+sort: open failed: t.txt: No such file or directory
+hello
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ echo hello;ls;echo hi;ls -l
+hello
+>  bin	bin?LICENSE  ex  LICENSE  Makefile  README.md  src  test2.txt  tests  test.txt
+hi
+total 60
+-rw------- 1 nfarh002 csmajs    52 Feb 22 15:59 >
+drwx------ 2 nfarh002 csmajs  4096 Mar  9 13:57 bin
+-rw------- 1 nfarh002 csmajs     0 Mar  8 22:03 bin?LICENSE
+drwx------ 2 nfarh002 csmajs  4096 Mar  9 13:59 ex
+-rw------- 1 nfarh002 csmajs 35122 Jan 23 16:37 LICENSE
+-rw------- 1 nfarh002 csmajs   274 Feb  9 15:08 Makefile
+-rw------- 1 nfarh002 csmajs   432 Mar  8 22:48 README.md
+drwx------ 2 nfarh002 csmajs  4096 Mar  8 23:12 src
+-rw------- 1 nfarh002 csmajs     6 Mar  7 21:08 test2.txt
+drwx------ 2 nfarh002 csmajs  4096 Mar  9 13:56 tests
+-rw------- 1 nfarh002 csmajs     0 Mar  8 22:03 test.txt
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ #test ; w/o   spaces^[[D           / spaces
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ echo hello     ;     echo hi
+hello
+hi
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ #multiple connectors
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ ls && echo hi || echo hello
+>  bin	bin?LICENSE  ex  LICENSE  Makefile  README.md  src  test2.txt  tests  test.txt
+hi || echo hello
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ ls s && echo hello && echo hi
+>  bin	bin?LICENSE  ex  LICENSE  Makefile  README.md  src  test2.txt  tests  test.txt
+hello
+hi
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ ls
+>  bin	bin?LICENSE  ex  LICENSE  Makefile  README.md  src  test2.txt  tests  test.txt
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ ls ; pwd
+>  bin	bin?LICENSE  ex  LICENSE  Makefile  README.md  src  test2.txt  tests  test.txt
+/home/csmajs/nfarh002/CS100/rshell
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ #test exit command
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ exit
+~/CS100/rshell
+nfarh002@hammer $ exit
+exit
+
+Script done on Mon 09 Mar 2015 02:09:33 PM PDT
