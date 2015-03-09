@@ -1,12 +1,15 @@
 Script started on Mon 09 Mar 2015 02:01:21 PM PDT
-~
+~
+
 nfarh002@hammer $ cd CS100/rshell
-~/CS100/rshell
+~/CS100/rshell
+
 nfarh002@hammer $ make
 g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell
 g++ -Wall -Werror -ansi -pedantic ./src/ls.cpp -o ./bin/ls
 g++ -Wall -Werror -ansi -pedantic ./src/cp.cpp -o ./bin/cp
-~/CS100/rshell
+~/CS100/rshell
+
 nfarh002@hammer $ bin/rshell
 nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ echo "hel         #testing single commands
 /home/csmajs/nfarh002/CS100/rshell
@@ -106,7 +109,8 @@ nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ ls ; pwd
 nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ #test exit command
 /home/csmajs/nfarh002/CS100/rshell
 nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ exit
-~/CS100/rshell
+~/CS100/rshell
+
 nfarh002@hammer $ exit
 exit
 
