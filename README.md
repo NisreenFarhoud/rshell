@@ -1,15 +1,13 @@
 ##Building RShell
 
-This program will run like a shell using commands through execvp.
+This program will run like a bash shell.
 
 ##Run program:	cd rshell
 		make
 		bin/rshell
 
 ##Bugs:
-1. commands not added
-2. connectors not working
-3. piping not working
+1. piping not working
 
 ##Built ls Command
 Bugs:
