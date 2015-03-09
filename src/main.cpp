@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std;
 #include <string>
 #include <unistd.h> //library for gethostname and getlogin
 #include <cstdlib>
@@ -7,11 +6,254 @@ using namespace std;
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 #include <errno.h>
 #include <pwd.h>
 #include <fcntl.h>
 #include <boost/tokenizer.hpp>
+#include <signal.h>
+#include <dirent.h>
+pid_t prid = 0;
+int pfd[2];
 using namespace boost;
+using namespace std;
+
+int new_exec(const string &one, char *const in[])
+{
+	string final = one;
+	char *p;
+	string s;
+	if((p=getenv("PATH")) == NULL)
+    	{
+        	perror("getenv failed");
+        	exit(1);
+    	}
+	s=p;
+    	char_separator<char> sep(":");
+    	tokenizer<char_separator<char> > token(s,sep);
+    	tokenizer<char_separator<char> >::iterator it = token.begin();
+    	for(;it!=token.end();++it)
+    	{
+		string path = *it + "/" + one;
+    	        struct stat buffer;
+    	        if(-1==stat(path.c_str(),&buffer))
+   	        {
+       	    		continue;
+       	    		perror("stat failed");
+       	        }
+       	        else
+			final = path;
+        }
+	return execv(final.c_str(),in);
+}
+void colon_connector(const string &command)
+{
+        int id;
+	char_separator<char> sep(";");
+        tokenizer<char_separator<char> > tokens(command,sep);
+        tokenizer<char_separator<char> >::iterator it = tokens.begin();
+        for(; it != tokens.end(); ++it)
+        {
+         	if(-1 == pipe(pfd))
+		{
+			perror("fork failed");
+			exit(1);
+		}
+		id=fork();	
+                prid=id;
+		if(-1 == id)
+                {
+                    perror("fork failed");
+                    exit(1);
+                }
+                else if(id == 0)
+                {
+			int j=0;
+                        char *input[50];
+                        char_separator<char> sep(" ");
+                        tokenizer<char_separator<char> > token(*it,sep);
+                        tokenizer<char_separator<char> >::iterator i = token.begin();
+                        if(i != token.end())
+                        {
+                                if(*i == "exit")
+                                        exit(8);
+                        }
+                        for(; i != token.end(); ++i,++j)
+                        {
+                                input[j] =new char[(*i).size()];
+                                strcpy(input[j],(*i).c_str());
+                        }
+			input[j] = 0;
+			if(-1 == new_exec(input[0],input))
+			{
+		                perror(input[0]);
+                                j=0;
+                                for(i = token.begin(); i != token.end(); ++i,++j)
+                                        delete [] input[j];
+                                exit(1);
+			}
+		}
+                else
+                {
+                        int stat_val = 0;
+                        if(-1 == wait(&stat_val))
+                        {
+                                perror("wait failed");
+                                exit(1);
+                        }
+
+                        int exitChild;
+                        if(WIFEXITED(stat_val))
+                        {
+                                exitChild = WEXITSTATUS(stat_val);
+                                if(exitChild == 8)
+                                        exit(0);
+                        }
+
+                        
+	        }
+	}
+}
+
+
+void and_connector(const string &command)
+{
+	int id;
+	char_separator<char> sep("&&");
+        tokenizer<char_separator<char> > tokens(command,sep);
+        tokenizer<char_separator<char> >::iterator it = tokens.begin();
+    	for(; it != tokens.end(); ++it)
+	{
+        	if(-1 == pipe(pfd))
+                {
+                        perror("fork failed");
+                        exit(1);
+                }
+		id = fork();
+                prid=id;
+        	if(-1 == id)
+		{
+        	    perror("fork failed");
+        	    exit(1);
+        	}
+		else if(id == 0)
+		{
+       			char *input[50];
+			char_separator<char> sep(" ");
+        		tokenizer<char_separator<char> > token(*it,sep);
+        		tokenizer<char_separator<char> >::iterator i = token.begin();
+    			if(i != token.end())
+			{
+				if(*i == "exit")
+        				exit(8);
+				//
+    			}
+    			int j = 0;
+    			for(; i != token.end(); ++i,++j)
+			{
+        			input[j] =new char[(*i).size()];
+        			strcpy(input[j],(*i).c_str());
+    			}
+    			input[j] = 0;
+		        if(-1 == new_exec(input[0],input))
+                        {
+                                perror(input[0]);
+                                j=0;
+                                for(i = token.begin(); i != token.end(); ++i,++j)
+                                        delete [] input[j];
+                                exit(1);
+                        }
+		}
+		else
+		{
+            		int stat_val = 0;
+            		if(-1 == wait(&stat_val))
+			{
+                		perror("wait failed");
+                		exit(1);
+            		}
+
+			int exitChild;
+                        if(WIFEXITED(stat_val))
+                        {
+                                exitChild = WEXITSTATUS(stat_val);
+                                if(exitChild == 1)
+                                        return;
+                                else if(exitChild == 8)
+                                        exit(0);
+
+			}
+	      	}	
+    	}
+}
+
+void or_connector(const string &command)
+{
+        int id;
+	char_separator<char> sep("||");
+        tokenizer<char_separator<char> > tokens(command,sep);
+        tokenizer<char_separator<char> >::iterator it = tokens.begin();
+        for(; it != tokens.end(); ++it)
+        {
+		if(-1 == pipe(pfd))
+                {
+                        perror("fork failed");
+                        exit(1);
+                }
+                id =fork();
+                prid = id;
+		if(-1 == id)
+                {
+                    perror("fork failed");
+                    exit(1);
+                }
+                else if(id == 0)
+                {
+                        char *input[50];
+                        char_separator<char> sep(" ");
+                        tokenizer<char_separator<char> > token(*it,sep);
+                        tokenizer<char_separator<char> >::iterator i = token.begin();
+                        if(i != token.end())
+                        {
+                                if(*i == "exit")
+                                        exit(8);
+                        }
+                        int j = 0;
+                        for(; i != token.end(); ++i,++j)
+                        {
+                                input[j] =new char[(*i).size()];
+                                strcpy(input[j],(*i).c_str());
+                        }
+                        input[j] = 0;
+                        if(-1 == new_exec(input[0],input))
+                        {
+                                perror(input[0]);
+                                j=0;
+                                for(i = token.begin(); i != token.end(); ++i,++j)
+                                        delete [] input[j];
+                                exit(1);
+                        }
+                }
+                else
+                {
+                        int stat_val = 0;
+                        if(-1 == wait(&stat_val))
+                        {
+                                perror("wait failed");
+                                exit(1);
+                        }
+			int exitChild;
+                        if(WIFEXITED(stat_val))
+			{
+				exitChild = WEXITSTATUS(stat_val);
+				if(exitChild == 0)
+					return;
+				else if(exitChild == 8)
+					exit(0);
+			}
+                }
+        }
+}
 
 void input_redirection(const string &command)
 {
@@ -64,11 +306,13 @@ void input_redirection(const string &command)
                                 exit(1);
                         }
 		}
-		execvp(argv[0],argv);
-			perror("execvp failed");
-		for(j=0,i=token.begin(); i != token.end(); ++j,++i)
-			delete [] argv[j];
-		exit(1);
+		argv[j] = 0;
+                if(-1 == new_exec(argv[0],argv))
+                        perror(argv[0]);
+                j=0;
+                for(i = token.begin(); i != token.end(); ++i,++j)
+                        delete [] argv[j];
+                exit(1);
 	}
 	else
 	{
@@ -154,12 +398,14 @@ void input_redirectionS(const string &command)
 				exit(1);
 			}
 		}
-		execvp(argv[0],argv);
-                        perror("execvp failed");
-                for(j=0,i=token.begin(); i != token.end(); ++j,++i)
-                        delete [] argv[j];
+		argv[j] = 0;
+                if(-1 == new_exec(argv[0],argv))
+                	perror(argv[0]);
+                j=0;
+                for(i = token.begin(); i != token.end(); ++i,++j)
+                	delete [] argv[j];
                 exit(1);
-        }
+	}
         else
         {
                 if(wait(NULL) == -1)
@@ -240,13 +486,13 @@ void output_redirection(const string& command)
                 	perror("dup failed");
                         exit(1);
                 }
-               
-                execvp(argv[0],argv);
-                        perror("execvp failed");
-                for(j=0,i=token.begin(); i != token.end(); ++j,++i)
+		argv[j] = 0;
+                if(-1 == new_exec(argv[0],argv))
+                        perror(argv[0]);
+                j=0;
+                for(i = token.begin(); i != token.end(); ++i,++j)
                         delete [] argv[j];
                 exit(1);
-
 	}
 	else
 	{
@@ -324,13 +570,13 @@ void output_redirectionD(const string& command)
                         perror("dup failed");
                         exit(1);
                 }
-
-                execvp(argv[0],argv);
-                        perror("execvp failed");
-                for(j=0,i=token.begin(); i != token.end(); ++j,++i)
+		argv[j] = 0;
+                if(-1 == new_exec(argv[0],argv))
+                        perror(argv[0]);
+                j=0;
+                for(i = token.begin(); i != token.end(); ++i,++j)
                         delete [] argv[j];
                 exit(1);
-
         }
         else
         {
@@ -347,9 +593,135 @@ void output_redirectionD(const string& command)
         }
 }
 
+void command_cd(const string &command)
+{
+	if(pipe(pfd) == -1)
+	{
+		perror("exit failed");
+		exit(1);
+	}
+
+	int id = fork();
+	prid = id;
+	if(id == -1)
+	{
+		perror("fork failed");
+		exit(1);
+	}
+	else if(id == 0)
+	{
+		char_separator<char> sep(" ");
+	       	tokenizer<char_separator<char> > tokens(command,sep);
+	       	tokenizer<char_separator<char> >::iterator it = tokens.begin();
+		++it;
+		string new_path = *it;
+		if(it == tokens.end())
+		{
+			cout << "No second arguement!" << endl;
+			return;
+		}
+		if(-1 == write(pfd[1],new_path.c_str(),new_path.size()))
+		{
+			perror("write failed");
+			exit(1);
+		}
+		exit(4);
+	}
+	else
+	{
+		int stat_val = 0;
+		if(waitpid(id,&stat_val,WUNTRACED)== -1)
+		{
+                	perror("WAIT");
+                	exit(1);
+		}
+		if(WIFEXITED(stat_val))
+		{
+			int childExit = WEXITSTATUS(stat_val);
+			if(childExit == 4)
+			{
+                		char end[BUFSIZ];
+                		memset(end,0,BUFSIZ);
+                		if(-1==close(pfd[1]))
+                		{
+                		    perror("close failed");
+                		    exit(1);
+                		}
+                		if(-1==read(pfd[0],end,BUFSIZ))
+                		{
+       	        		    perror("read failed");
+       	        		    exit(1);
+        	       		}
+       	        		if(-1==close(pfd[0]))
+                		{
+                		    perror("close failes");
+                		    exit(1);
+                		}
+                		if(-1==chdir(end))
+        	       		{
+                	    		perror("chdir failed");
+        	       	    		return;
+        	       		}	
+       			}
+		}			
+	}
+	return;
+
+}
+
+void C_handler(int sig)
+{
+	if(0 != prid)
+	{
+		kill(prid,SIGKILL);
+		prid = 0;
+	}
+}
+
+void Z_handler(int sig)
+{
+	if(0 != prid)
+	{
+		kill(prid,SIGSTOP);
+		//raise(SIGSTOP);
+		cout << endl << "Paused foreground" << endl;
+	}
+}
+
+void command_fg()
+{
+	if(prid != 0)
+        	kill(prid, SIGCONT);
+        else
+                cout << "fg failed" << endl;
+	return;
+}
+
+void command_bg()
+{
+	if(prid != 0)
+	{
+        	kill(prid, SIGCONT);
+                prid = 0;
+        }
+        else
+        	cout << "bg failed" << endl;
+	return;
+}
+
 
 int main()
 {
+	if(SIG_ERR == signal(SIGINT,C_handler))
+	{
+		perror("signal failed");
+		exit(1);
+	}
+	if(SIG_ERR == signal(SIGTSTP,Z_handler))
+	{
+		perror("signal failed");
+		exit(1);
+	}
 	//setup for print username/hostname
 	string command;
 	char *login_name = getlogin();
@@ -365,17 +737,29 @@ int main()
 		{
 			cout << login_name << "@" << hostname;
 		}
-		cout << " $ ";
+
+		char currentD[BUFSIZ];
+		if(NULL == getcwd(currentD,BUFSIZ))
+		{
+			perror("getcwd failed");
+			exit(1);
+		}
+
+		cout << ":" << currentD << " $ ";
 		getline(cin,command);
 		if(command.find("#") != string::npos)
 		{
-			command.erase(command.find("#"));
+			command = command.substr(0,command.find("#"));
 		}
 		if(command == "exit")
 		{
 			exit(0);
 		}
-		if(command.find("<<<") != string::npos)
+		if(command.find("&&") != string::npos)
+			and_connector(command);
+		else if(command.find("||") != string::npos)
+			or_connector(command);
+		else if(command.find("<<<") != string::npos)
 		{
 			input_redirectionS(command);
 			cout << endl;
@@ -386,6 +770,21 @@ int main()
 			output_redirectionD(command);
 		else if(command.find(">") != string::npos)
 			output_redirection(command);
+		else if(command.find("cd") != string::npos)
+			command_cd(command);
+		else if(command.find("fg") != string::npos)
+			command_fg();
+        	else if(command.find("bg") != string::npos)
+			command_bg();
+		else
+			colon_connector(command);
+		char currD[BUFSIZ];
+        	if(NULL == getcwd(currD,BUFSIZ))
+        	{
+                	perror("getcwd failed");
+                	exit(1);
+        	}
+        	cout << currD << endl;
 	}
 	return 0;
 }
