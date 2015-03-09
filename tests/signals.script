@@ -1,0 +1,807 @@
+cript started, file is signals.script
+~
+nfarh002@hammer $ cd CS100/rshell
+~/CS100/rshell
+nfarh002@hammer $ make rshell
+g++ -Wall -Werror -ansi -pedantic ./src/main.cpp -o ./bin/rshell
+~/CS100/rshell
+nfarh002@hammer $ bin/rshell
+entered
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ #test cd command
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ cd ..
+/home/csmajs/nfarh002/CS100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100 $ cd ..
+/home/csmajs/nfarh002
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002 $ cd ./ucr-cs100
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ cd textbook/tools
+/home/csmajs/nfarh002/ucr-cs100/textbook/tools
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100/textbook/tools $ cd ..
+/home/csmajs/nfarh002/ucr-cs100/textbook
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100/textbook $ cd ..
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ # testing commands
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ pwd
+/home/csmajs/nfarh002/ucr-cs100
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ echo hello
+hello
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ echo hi ; echo hello
+hi
+hello
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ echo hi && echo hello
+hi
+hello
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ echo hi || echo hello
+hi
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ #handling ^C signal
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ ls -alR
+.:
+total 72
+drwx------ 10 nfarh002 csmajs  4096 Mar  2 15:28 .
+drwx------ 46 nfarh002 csmajs 12288 Mar  8 21:33 ..
+drwx------  7 nfarh002 csmajs  4096 Jan 14 16:27 assignments
+drwx------  9 nfarh002 csmajs  4096 Mar  4 11:35 .git
+-rw-------  1 nfarh002 csmajs   256 Jan 14 16:27 .gitignore
+drwx------  2 nfarh002 csmajs  4096 Jan 14 16:27 gitlearn
+-rw-------  1 nfarh002 csmajs    87 Jan 14 16:27 .gitmodules
+drwx------  3 nfarh002 csmajs  4096 Feb 20 23:28 lecture-notes
+-rw-------  1 nfarh002 csmajs   179 Jan 14 16:27 LICENSE
+drwx------  4 nfarh002 csmajs  4096 Jan 14 16:27 people
+-rw-------  1 nfarh002 csmajs  8414 Feb 20 23:28 README.md
+drwx------  3 nfarh002 csmajs  4096 Mar  2 15:28 scripts
+drwx------  9 nfarh002 csmajs  4096 Jan 28 15:01 textbook
+drwx------  2 nfarh002 csmajs  4096 Jan 28 15:01 videos
+
+./assignments:
+total 28
+drwx------  7 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 10 nfarh002 csmajs 4096 Mar  2 15:28 ..
+drwx------  6 nfarh002 csmajs 4096 Jan 14 16:27 ec
+drwx------  7 nfarh002 csmajs 4096 Jan 14 16:27 hw
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 lab
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 linux
+drwx------  9 nfarh002 csmajs 4096 Jan 14 16:27 quiz
+
+./assignments/ec:
+total 24
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 ec-bounty
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 ec-online
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 ec-reading
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 ec-vim
+
+./assignments/ec/ec-bounty:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    4 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 1177 Jan 14 16:27 README.md
+
+./assignments/ec/ec-online:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    4 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 1610 Jan 14 16:27 README.md
+
+./assignments/ec/ec-reading:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    4 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs  854 Jan 14 16:27 README.md
+
+./assignments/ec/ec-vim:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    4 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs  487 Jan 14 16:27 README.md
+
+./assignments/hw:
+total 28
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 hw0-rshell
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 hw1-ls
+drwx------ 2 nfarh002 csmajs 4096 Feb 20 23:28 hw2-piping
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 hw3-signals
+drwx------ 2 nfarh002 csmajs 4096 Mar  2 15:28 hw4-contributing
+
+./assignments/hw/hw0-rshell:
+total 24
+drwx------ 2 nfarh002 csmajs  4096 Jan 28 15:01 .
+drwx------ 7 nfarh002 csmajs  4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs     6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 12411 Jan 28 15:01 README.md
+
+./assignments/hw/hw1-ls:
+total 20
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    7 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs  529 Jan 28 15:01 ls.cpp
+-rw------- 1 nfarh002 csmajs 5220 Jan 28 15:01 README.md
+
+./assignments/hw/hw2-piping:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Feb 20 23:28 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 3989 Feb 20 23:28 README.md
+
+./assignments/hw/hw3-signals:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 2832 Jan 14 16:27 README.md
+
+./assignments/hw/hw4-contributing:
+total 16
+drwx------ 2 nfarh002 csmajs 4096 Mar  2 15:28 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 7210 Mar  2 15:28 README.md
+
+./assignments/lab:
+total 48
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------  7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 lab0-vim
+drwx------  3 nfarh002 csmajs 4096 Jan 28 15:01 lab1-git
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 lab2-fork
+drwx------  5 nfarh002 csmajs 4096 Jan 28 15:01 lab3-gdb
+drwx------  2 nfarh002 csmajs 4096 Feb  2 23:58 lab4-cstring
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 lab5-cp
+drwx------  2 nfarh002 csmajs 4096 Feb 23 14:53 lab6-signal
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 lab7-rm
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 lab8-spam
+-rw-------  1 nfarh002 csmajs  726 Jan 14 16:27 README.md
+
+./assignments/lab/lab0-vim:
+total 28
+drwx------  2 nfarh002 csmajs  4096 Jan 28 15:01 .
+drwx------ 11 nfarh002 csmajs  4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    39 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs  2772 Jan 28 15:01 README.md
+-rw-------  1 nfarh002 csmajs 15091 Jan 28 15:01 terminal.md
+
+./assignments/lab/lab1-git:
+total 40
+drwx------  3 nfarh002 csmajs  4096 Jan 28 15:01 .
+drwx------ 11 nfarh002 csmajs  4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs     5 Jan 14 16:27 grade
+drwx------  2 nfarh002 csmajs  4096 Jan 14 16:27 images
+-rw-------  1 nfarh002 csmajs 25589 Jan 28 15:01 README.md
+
+./assignments/lab/lab1-git/images:
+total 484
+drwx------ 2 nfarh002 csmajs  4096 Jan 14 16:27 .
+drwx------ 3 nfarh002 csmajs  4096 Jan 28 15:01 ..
+-rw------- 1 nfarh002 csmajs 15057 Jan 14 16:27 10.png
+-rw------- 1 nfarh002 csmajs 17020 Jan 14 16:27 11.png
+-rw------- 1 nfarh002 csmajs  2759 Jan 14 16:27 1.png
+-rw------- 1 nfarh002 csmajs  4874 Jan 14 16:27 2.png
+-rw------- 1 nfarh002 csmajs  6856 Jan 14 16:27 3.png
+-rw------- 1 nfarh002 csmajs  8130 Jan 14 16:27 4.png
+-rw------- 1 nfarh002 csmajs  8152 Jan 14 16:27 5.png
+-rw------- 1 nfarh002 csmajs  9659 Jan 14 16:27 6.png
+-rw------- 1 nfarh002 csmajs 10931 Jan 14 16:27 7.png
+-rw------- 1 nfarh002 csmajs 11946 Jan 14 16:27 8.png
+-rw------- 1 nfarh002 csmajs 15298 Jan 14 16:27 9.png
+-rw------- 1 nfarh002 csmajs 41620 Jan 14 16:27 collaborators.png
+-rw------- 1 nfarh002 csmajs 46543 Jan 14 16:27 fork.png
+-rw------- 1 nfarh002 csmajs 46867 Jan 14 16:27 issues.png
+-rw------- 1 nfarh002 csmajs 52253 Jan 14 16:27 pull_request.png
+-rw------- 1 nfarh002 csmajs 70549 Jan 14 16:27 settings.png
+-rw------- 1 nfarh002 csmajs 47625 Jan 14 16:27 summary.png
+-rw------- 1 nfarh002 csmajs 35571 Jan 14 16:27 watch.png
+
+./assignments/lab/lab2-fork:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 1159 Jan 14 16:27 README.md
+
+./assignments/lab/lab3-gdb:
+total 24
+drwx------  5 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 ex1
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 ex2
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 ex3
+-rw-------  1 nfarh002 csmajs 1515 Jan 28 15:01 README.md
+
+./assignments/lab/lab3-gdb/ex1:
+total 20
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 5 nfarh002 csmajs 4096 Jan 28 15:01 ..
+-rw------- 1 nfarh002 csmajs 1000 Jan 14 16:27 ex1.cpp
+-rw------- 1 nfarh002 csmajs 5023 Jan 28 15:01 README.md
+
+./assignments/lab/lab3-gdb/ex2:
+total 16
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 5 nfarh002 csmajs 4096 Jan 28 15:01 ..
+-rw------- 1 nfarh002 csmajs 1942 Jan 14 16:27 ex2.cpp
+-rw------- 1 nfarh002 csmajs 2797 Jan 28 15:01 README.md
+
+./assignments/lab/lab3-gdb/ex3:
+total 40
+drwx------ 2 nfarh002 csmajs  4096 Jan 14 16:27 .
+drwx------ 5 nfarh002 csmajs  4096 Jan 28 15:01 ..
+-rw------- 1 nfarh002 csmajs 26729 Jan 14 16:27 hbhairy-utils.tar.xz
+-rw------- 1 nfarh002 csmajs  1915 Jan 14 16:27 README.md
+
+./assignments/lab/lab4-cstring:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Feb  2 23:58 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 1793 Jan 14 16:27 README.md
+
+./assignments/lab/lab5-cp:
+total 16
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 2887 Jan 28 15:01 README.md
+-rw-------  1 nfarh002 csmajs 2698 Jan 14 16:27 Timer.h
+
+./assignments/lab/lab6-signal:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Feb 23 14:53 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 1121 Feb 23 14:53 README.md
+
+./assignments/lab/lab7-rm:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs  740 Jan 14 16:27 README.md
+
+./assignments/lab/lab8-spam:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 2327 Jan 14 16:27 README.md
+
+./assignments/linux:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 2075 Jan 14 16:27 README.md
+
+./assignments/quiz:
+total 36
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz0
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz1
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz2
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz3
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz4
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz5
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz6
+
+./assignments/quiz/quiz0:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 2154 Jan 14 16:27 unixhistory.tex
+
+./assignments/quiz/quiz1:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 2080 Jan 14 16:27 quiz1-gitunix.tex
+
+./assignments/quiz/quiz2:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs  911 Jan 14 16:27 README.md
+
+./assignments/quiz/quiz3:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 1167 Jan 14 16:27 sizeof.tex
+
+./assignments/quiz/quiz4:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs 1808 Jan 14 16:27 bitwise.tex
+-rw------- 1 nfarh002 csmajs    7 Jan 14 16:27 grade
+
+./assignments/quiz/quiz5:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 1746 Jan 14 16:27 regex.tex
+
+./assignments/quiz/quiz6:
+total 20
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs 9801 Jan 14 16:27 abet.docx
+
+./.git:
+^C/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ #showing more commands with i/o
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ cd ..
+/home/csmajs/nfarh002
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002 $ cd rshell
+chdir failed: No such file or directory
+/home/csmajs/nfarh002
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002 $ cd CS100
+/home/csmajs/nfarh002/CS100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100 $ cd rshell
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ ls
+>  bin	LICENSE  Makefile  README.md  src  test2.txt  tests  test.txt
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ cat < test2.txt
+hello
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ cat <<< "hello"
+hello
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ ls > test.txt
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ cat < test.txt
+>
+bin
+LICENSE
+Makefile
+README.md
+src
+test2.txt
+tests
+test.txt
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ #handle ^Z signal    
+/home/csmajs/nfarh002/CS100/rshell
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100/rshell $ cd ..
+/home/csmajs/nfarh002/CS100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/CS100 $ cd ..
+/home/csmajs/nfarh002
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002 $ cd ucr-cs100
+/home/csmajs/nfarh002/ucr-cs100
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ ls -alR
+.:
+total 72
+drwx------ 10 nfarh002 csmajs  4096 Mar  2 15:28 .
+drwx------ 46 nfarh002 csmajs 12288 Mar  8 21:33 ..
+drwx------  7 nfarh002 csmajs  4096 Jan 14 16:27 assignments
+drwx------  9 nfarh002 csmajs  4096 Mar  4 11:35 .git
+-rw-------  1 nfarh002 csmajs   256 Jan 14 16:27 .gitignore
+drwx------  2 nfarh002 csmajs  4096 Jan 14 16:27 gitlearn
+-rw-------  1 nfarh002 csmajs    87 Jan 14 16:27 .gitmodules
+drwx------  3 nfarh002 csmajs  4096 Feb 20 23:28 lecture-notes
+-rw-------  1 nfarh002 csmajs   179 Jan 14 16:27 LICENSE
+drwx------  4 nfarh002 csmajs  4096 Jan 14 16:27 people
+-rw-------  1 nfarh002 csmajs  8414 Feb 20 23:28 README.md
+drwx------  3 nfarh002 csmajs  4096 Mar  2 15:28 scripts
+drwx------  9 nfarh002 csmajs  4096 Jan 28 15:01 textbook
+drwx------  2 nfarh002 csmajs  4096 Jan 28 15:01 videos
+
+./assignments:
+total 28
+drwx------  7 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 10 nfarh002 csmajs 4096 Mar  2 15:28 ..
+drwx------  6 nfarh002 csmajs 4096 Jan 14 16:27 ec
+drwx------  7 nfarh002 csmajs 4096 Jan 14 16:27 hw
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 lab
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 linux
+drwx------  9 nfarh002 csmajs 4096 Jan 14 16:27 quiz
+
+./assignments/ec:
+total 24
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 ec-bounty
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 ec-online
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 ec-reading
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 ec-vim
+
+./assignments/ec/ec-bounty:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    4 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 1177 Jan 14 16:27 README.md
+
+./assignments/ec/ec-online:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    4 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 1610 Jan 14 16:27 README.md
+
+./assignments/ec/ec-reading:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    4 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs  854 Jan 14 16:27 README.md
+
+./assignments/ec/ec-vim:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 6 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    4 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs  487 Jan 14 16:27 README.md
+
+./assignments/hw:
+total 28
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 hw0-rshell
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 hw1-ls
+drwx------ 2 nfarh002 csmajs 4096 Feb 20 23:28 hw2-piping
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 hw3-signals
+drwx------ 2 nfarh002 csmajs 4096 Mar  2 15:28 hw4-contributing
+
+./assignments/hw/hw0-rshell:
+total 24
+drwx------ 2 nfarh002 csmajs  4096 Jan 28 15:01 .
+drwx------ 7 nfarh002 csmajs  4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs     6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 12411 Jan 28 15:01 README.md
+
+./assignments/hw/hw1-ls:
+total 20
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    7 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs  529 Jan 28 15:01 ls.cpp
+-rw------- 1 nfarh002 csmajs 5220 Jan 28 15:01 README.md
+
+./assignments/hw/hw2-piping:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Feb 20 23:28 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 3989 Feb 20 23:28 README.md
+
+./assignments/hw/hw3-signals:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 2832 Jan 14 16:27 README.md
+
+./assignments/hw/hw4-contributing:
+total 16
+drwx------ 2 nfarh002 csmajs 4096 Mar  2 15:28 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 7210 Mar  2 15:28 README.md
+
+./assignments/lab:
+total 48
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------  7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 lab0-vim
+drwx------  3 nfarh002 csmajs 4096 Jan 28 15:01 lab1-git
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 lab2-fork
+drwx------  5 nfarh002 csmajs 4096 Jan 28 15:01 lab3-gdb
+drwx------  2 nfarh002 csmajs 4096 Feb  2 23:58 lab4-cstring
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 lab5-cp
+drwx------  2 nfarh002 csmajs 4096 Feb 23 14:53 lab6-signal
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 lab7-rm
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 lab8-spam
+-rw-------  1 nfarh002 csmajs  726 Jan 14 16:27 README.md
+
+./assignments/lab/lab0-vim:
+total 28
+drwx------  2 nfarh002 csmajs  4096 Jan 28 15:01 .
+drwx------ 11 nfarh002 csmajs  4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    39 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs  2772 Jan 28 15:01 README.md
+-rw-------  1 nfarh002 csmajs 15091 Jan 28 15:01 terminal.md
+
+./assignments/lab/lab1-git:
+total 40
+drwx------  3 nfarh002 csmajs  4096 Jan 28 15:01 .
+drwx------ 11 nfarh002 csmajs  4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs     5 Jan 14 16:27 grade
+drwx------  2 nfarh002 csmajs  4096 Jan 14 16:27 images
+-rw-------  1 nfarh002 csmajs 25589 Jan 28 15:01 README.md
+
+./assignments/lab/lab1-git/images:
+total 484
+drwx------ 2 nfarh002 csmajs  4096 Jan 14 16:27 .
+drwx------ 3 nfarh002 csmajs  4096 Jan 28 15:01 ..
+-rw------- 1 nfarh002 csmajs 15057 Jan 14 16:27 10.png
+-rw------- 1 nfarh002 csmajs 17020 Jan 14 16:27 11.png
+-rw------- 1 nfarh002 csmajs  2759 Jan 14 16:27 1.png
+-rw------- 1 nfarh002 csmajs  4874 Jan 14 16:27 2.png
+-rw------- 1 nfarh002 csmajs  6856 Jan 14 16:27 3.png
+-rw------- 1 nfarh002 csmajs  8130 Jan 14 16:27 4.png
+-rw------- 1 nfarh002 csmajs  8152 Jan 14 16:27 5.png
+-rw------- 1 nfarh002 csmajs  9659 Jan 14 16:27 6.png
+-rw------- 1 nfarh002 csmajs 10931 Jan 14 16:27 7.png
+-rw------- 1 nfarh002 csmajs 11946 Jan 14 16:27 8.png
+-rw------- 1 nfarh002 csmajs 15298 Jan 14 16:27 9.png
+-rw------- 1 nfarh002 csmajs 41620 Jan 14 16:27 collaborators.png
+-rw------- 1 nfarh002 csmajs 46543 Jan 14 16:27 fork.png
+-rw------- 1 nfarh002 csmajs 46867 Jan 14 16:27 issues.png
+-rw------- 1 nfarh002 csmajs 52253 Jan 14 16:27 pull_request.png
+-rw------- 1 nfarh002 csmajs 70549 Jan 14 16:27 settings.png
+-rw------- 1 nfarh002 csmajs 47625 Jan 14 16:27 summary.png
+-rw------- 1 nfarh002 csmajs 35571 Jan 14 16:27 watch.png
+
+./assignments/lab/lab2-fork:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 1159 Jan 14 16:27 README.md
+
+./assignments/lab/lab3-gdb:
+total 24
+drwx------  5 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 ex1
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 ex2
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 ex3
+-rw-------  1 nfarh002 csmajs 1515 Jan 28 15:01 README.md
+
+./assignments/lab/lab3-gdb/ex1:
+total 20
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 5 nfarh002 csmajs 4096 Jan 28 15:01 ..
+-rw------- 1 nfarh002 csmajs 1000 Jan 14 16:27 ex1.cpp
+-rw------- 1 nfarh002 csmajs 5023 Jan 28 15:01 README.md
+
+./assignments/lab/lab3-gdb/ex2:
+total 16
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 5 nfarh002 csmajs 4096 Jan 28 15:01 ..
+-rw------- 1 nfarh002 csmajs 1942 Jan 14 16:27 ex2.cpp
+-rw------- 1 nfarh002 csmajs 2797 Jan 28 15:01 README.md
+
+./assignments/lab/lab3-gdb/ex3:
+total 40
+drwx------ 2 nfarh002 csmajs  4096 Jan 14 16:27 .
+drwx------ 5 nfarh002 csmajs  4096 Jan 28 15:01 ..
+-rw------- 1 nfarh002 csmajs 26729 Jan 14 16:27 hbhairy-utils.tar.xz
+-rw------- 1 nfarh002 csmajs  1915 Jan 14 16:27 README.md
+
+./assignments/lab/lab4-cstring:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Feb  2 23:58 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 1793 Jan 14 16:27 README.md
+
+./assignments/lab/lab5-cp:
+total 16
+drwx------  2 nfarh002 csmajs 4096 Jan 28 15:01 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 2887 Jan 28 15:01 README.md
+-rw-------  1 nfarh002 csmajs 2698 Jan 14 16:27 Timer.h
+
+./assignments/lab/lab6-signal:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Feb 23 14:53 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 1121 Feb 23 14:53 README.md
+
+./assignments/lab/lab7-rm:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs  740 Jan 14 16:27 README.md
+
+./assignments/lab/lab8-spam:
+total 12
+drwx------  2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 11 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw-------  1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw-------  1 nfarh002 csmajs 2327 Jan 14 16:27 README.md
+
+./assignments/linux:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 2075 Jan 14 16:27 README.md
+
+./assignments/quiz:
+total 36
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 7 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz0
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz1
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz2
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz3
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz4
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz5
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 quiz6
+
+./assignments/quiz/quiz0:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 2154 Jan 14 16:27 unixhistory.tex
+
+./assignments/quiz/quiz1:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 2080 Jan 14 16:27 quiz1-gitunix.tex
+
+./assignments/quiz/quiz2:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs  911 Jan 14 16:27 README.md
+
+./assignments/quiz/quiz3:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    6 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 1167 Jan 14 16:27 sizeof.tex
+
+./assignments/quiz/quiz4:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs 1808 Jan 14 16:27 bitwise.tex
+-rw------- 1 nfarh002 csmajs    7 Jan 14 16:27 grade
+
+./assignments/quiz/quiz5:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs    5 Jan 14 16:27 grade
+-rw------- 1 nfarh002 csmajs 1746 Jan 14 16:27 regex.tex
+
+./assignments/quiz/quiz6:
+total 20
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Jan 14 16:27 ..
+-rw------- 1 nfarh002 csmajs 9801 Jan 14 16:27 abet.docx
+
+./.git:
+total 84
+drwx------   9 nfarh002 csmajs  4096 Mar  4 11:35 .
+drwx------  10 nfarh002 csmajs  4096 Mar  2 15:28 ..
+drwx------   2 nfarh002 csmajs  4096 Jan 14 16:27 branches
+-rw-------   1 nfarh002 csmajs    29 Feb 20 23:38 COMMIT_EDITMSG
+-rw-------   1 nfarh002 csmajs   414 Jan 28 14:55 config
+-rw-------   1 nfarh002 csmajs    73 Jan 14 16:27 description
+-rw-------   1 nfarh002 csmajs   497 Mar  4 11:35 FETCH_HEAD
+-rw-------   1 nfarh002 csmajs    27 Mar  4 11:35 HEAD
+drwx------   2 nfarh002 csmajs  4096 Jan 14 16:27 hooks
+-rw-------   1 nfarh002 csmajs 27216 Mar  4 11:35 index
+drwx------   2 nfarh002 csmajs  4096 Jan 14 16:27 info
+drwx------   3 nfarh002 csmajs  4096 Jan 14 16:27 logs
+drwx------ 220 nfarh002 csmajs  8192 Mar  4 11:35 objects
+-rw-------   1 nfarh002 csmajs    41 Mar  4 11:35 ORIG_HEAD
+-rw-------   1 nfarh002 csmajs   320 Jan 14 16:27 packed-refs
+drwx------   2 nfarh002 csmajs  4096 Jan 28 22:50 rebase-merge
+drwx------   5 nfarh002 csmajs  4096 Jan 14 16:27 refs
+
+./.git/branches:
+total 8
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Mar  4 11:35 ..
+
+./.git/hooks:
+total 52
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Mar  4 11:35 ..
+-rwx------ 1 nfarh002 csmajs  452 Jan 14 16:27 applypatch-msg.sample
+-rwx------ 1 nfarh002 csmajs  896 Jan 14 16:27 commit-msg.sample
+-rwx------ 1 nfarh002 csmajs  160 Jan 14 16:27 post-commit.sample
+-rwx------ 1 nfarh002 csmajs  548 Jan 14 16:27 post-receive.sample
+-rwx------ 1 nfarh002 csmajs  189 Jan 14 16:27 post-update.sample
+-rwx------ 1 nfarh002 csmajs  398 Jan 14 16:27 pre-applypatch.sample
+-rwx------ 1 nfarh002 csmajs 1578 Jan 14 16:27 pre-commit.sample
+-rwx------ 1 nfarh002 csmajs 1239 Jan 14 16:27 prepare-commit-msg.sample
+-rwx------ 1 nfarh002 csmajs 4951 Jan 14 16:27 pre-rebase.sample
+-rwx------ 1 nfarh002 csmajs 3611 Jan 14 16:27 update.sample
+
+./.git/info:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Mar  4 11:35 ..
+-rw------- 1 nfarh002 csmajs  240 Jan 14 16:27 exclude
+
+./.git/logs:
+total 20
+drwx------ 3 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 9 nfarh002 csmajs 4096 Mar  4 11:35 ..
+-rw------- 1 nfarh002 csmajs 4396 Mar  4 11:35 HEAD
+drwx------ 4 nfarh002 csmajs 4096 Jan 28 14:46 refs
+
+./.git/logs/refs:
+total 16
+drwx------ 4 nfarh002 csmajs 4096 Jan 28 14:46 .
+drwx------ 3 nfarh002 csmajs 4096 Jan 14 16:27 ..
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 heads
+drwx------ 4 nfarh002 csmajs 4096 Jan 28 22:17 remotes
+
+./.git/logs/refs/heads:
+total 12
+drwx------ 2 nfarh002 csmajs 4096 Jan 14 16:27 .
+drwx------ 4 nfarh002 csmajs 4096 Jan 28 14:46 ..
+-rw------- 1 nfarh002 csmajs 3955 Mar  4 11:35 2015winter
+
+./.git/logs/refs/remotes:
+total 16
+drwx------ 4 nfarh002 csmajs 4096 Jan 28 22:17 .
+drwx------ 4 nfarh002 csmajs 4096 Jan 28 14:46 ..
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 22:44 origin
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 14:46 upstream
+
+./.git/logs/refs/remotes/origin:
+total 16
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 22:44 .
+drwx------ 4 nfarh002 csmajs 4096 Jan 28 22:17 ..
+-rw------- 1 nfarh002 csmajs 2549 Mar  4 11:36 2015winter
+-rw------- 1 nfarh002 csmajs  164 Jan 28 22:44 grades
+
+./.git/logs/refs/remotes/upstream:
+total 24
+drwx------ 2 nfarh002 csmajs 4096 Jan 28 14:46 .
+drwx------ 4 nfarh002 csmajs 4096 Jan 28 22:17 ..
+-rw------- 1 nfarh002 csmajs 2422 Mar  4 11:35 2015winter
+-rw------- 1 nfarh002 csmajs  173 Jan 28 14:46 cs100-2014fall
+-rw------- 1 nfarh002 csmajs  173 Jan 28 14:46 cs100-2014summer
+-rw------- 1 nfarh002 csmajs  173 Jan 28 14:46 revert-770-2015winter
+^Z
+foreground paused
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ fg
+./.git/objects:
+total 884
+drwx------ 220 nfarh002 csmajs 8192 Mar  4 11:35 ./
+drwx------   9 nfarh002 csmajs 4096 Mar  4 11:35 ../
+drwx------   2 nfarh002 csmajs 4096 Feb 24 12:53 00/
+drwx------   2 nfarh002 csmajs 4096 Feb 20 23:28 01/
+drwx------   2 nfarh002 csmajs 4096 Mar  2 15:28 02/
+drwx------   2 nfarh002 csmajs 4096 Mar  2 15:28 03/
+^Z
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ bg
+drwx------   2 nfarh002 csmajs 4096 Feb 20 23:28 05/
+drwx------   2 nfarh002 csmajs 4096 Mar  2 15:28 06/
+drwx------   2 nfarh002 csmajs 4096 Jan 28 22:44 07/
+drwx------   2 nfarh002 csmajs 4096 Feb 20 23:28 08/
+drwx------   2 nfarh002 csmajs 4096 Feb 11 12:11 09/
+^C
+nfarh002@hammer.cs.ucr.edu:/home/csmajs/nfarh002/ucr-cs100 $ exit
+
+Script done on Sun 08 Mar 2015 10:19:10 PM PST
